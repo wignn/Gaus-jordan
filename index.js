@@ -105,18 +105,19 @@ function makeM(A, b) {
 function substitute(M) {
     const m = M.length;
     for (let i = m - 1; i >= 0; --i) {
-        const x = M[i][m].divide(M[i][i]);
+        const x = M[i][M[i].length - 1].divide(M[i][i]);
         console.log(`Substitusi: Baris ${i + 1} = Baris ${i + 1} / (${M[i][i].toString()})`);
         for (let j = i - 1; j >= 0; --j) {
-            M[j][m] = M[j][m].subtract(x.multiply(M[j][i]));
+            M[j][M[j].length - 1] = M[j][M[j].length - 1].subtract(x.multiply(M[j][i]));
             M[j][i] = new Fraction(0);
             print(M, `Baris ${j + 1} diperbarui selama substitusi menggunakan baris ${i + 1}`);
         }
-        M[i][m] = x;
+        M[i][M[i].length - 1] = x;
         M[i][i] = new Fraction(1);
         print(M, `Baris ${i + 1} setelah substitusi`);
     }
 }
+
 
 function extractX(M) {
     const x = [];
@@ -138,12 +139,14 @@ function solve(A, b) {
 }
 
 const A = [
-    [new Fraction(2), new Fraction(5), new Fraction(3)],
-    [new Fraction(1), new Fraction(2), new Fraction(3)],
-    [new Fraction(1), new Fraction(0), new Fraction(3)]
+    [new Fraction(2), new Fraction(3), new Fraction(1)],
+    [new Fraction(0), new Fraction(6), new Fraction(3)],
+    [new Fraction(1), new Fraction(1), new Fraction(7)], 
+    [new Fraction(0), new Fraction(1), new Fraction(5)]
 ];
 
-const b = [new Fraction(6), new Fraction(1), new Fraction(-6)];
+
+const b = [new Fraction(4), new Fraction(9), new Fraction(5), new Fraction(6)];
 
 print(A, "Matriks A");
 print(b, "Vektor b");
