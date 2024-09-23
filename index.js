@@ -139,13 +139,14 @@ function solve(A, b) {
 }
 
 const A = [
+    //matrixnya
     [new Fraction(2), new Fraction(3), new Fraction(1)],
     [new Fraction(0), new Fraction(6), new Fraction(3)],
     [new Fraction(1), new Fraction(1), new Fraction(7)], 
     [new Fraction(0), new Fraction(1), new Fraction(5)]
 ];
 
-
+//konstantanya
 const b = [new Fraction(4), new Fraction(9), new Fraction(5), new Fraction(6)];
 
 print(A, "Matriks A");
